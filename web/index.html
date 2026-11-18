@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; style-src 'self' 'unsafe-inline'">
+  <meta name="theme-color" content="#193e33">
+  <link rel="icon" href="mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <title>Today · Sangar</title>
+  <script src="app.mjs" type="module"></script>
+</head>
+<body>
+  <a href="#content" class="skip">Skip to workspace</a>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand"><img src="mark.svg" width="34" height="34" alt=""><strong>Sangar</strong><span lang="fa" dir="rtl">سنگر</span></div>
+      <nav aria-label="Workspace">
+        <button type="button" id="nav-today" aria-current="page"><span aria-hidden="true" class="nav-icon">☀</span>Today <span class="nav-count" id="today-count">0</span></button>
+        <button type="button" id="nav-inbox"><span aria-hidden="true" class="nav-icon">▱</span>Inbox <span class="nav-count" id="inbox-count">0</span></button>
+      </nav>
+      <div class="local-note"><span class="dot"></span><span id="storage-state">Stored in this browser</span></div>
+    </aside>
+    <main id="content" tabindex="-1">
+      <header>
+        <h1 id="view-title">Today</h1>
+        <p id="dateline"></p>
+      </header>
+      <div id="storage-issue" role="alert" hidden></div>
+      <div class="workspace">
+        <div class="tasks">
+          <section class="capture" aria-labelledby="capture-title">
+            <h2 id="capture-title">Capture a task</h2>
+            <form id="capture">
+              <label for="task-title">Task title</label>
+              <input id="task-title" name="title" type="text" required maxlength="160" placeholder="What needs doing?" autocomplete="off">
+              <div class="form-bottom">
+                <div class="project-field">
+                  <label for="project">Project</label>
+                  <select id="project" name="project"><option>Project launch</option><option>Weekend plans</option></select>
+                </div>
+                <button class="primary" id="add-task" type="submit">Add to Today</button>
+              </div>
+            </form>
+          </section>
+          <section aria-labelledby="list-heading">
+            <div class="section-head"><h2 id="list-heading">On the list</h2><span id="open-count"></span></div>
+            <ul class="task-list" id="open-list"></ul>
+            <p class="empty" id="empty-open" hidden></p>
+          </section>
+          <section aria-labelledby="done-heading" id="done-section" hidden>
+            <div class="section-head"><h2 id="done-heading">Completed</h2><span id="done-count"></span></div>
+            <ul class="task-list done" id="done-list"></ul>
+          </section>
+        </div>
+        <aside aria-label="Day summary" class="summary">
+          <section class="progress-card" aria-labelledby="progress-heading">
+            <h2 id="progress-heading">Daily progress</h2>
+            <div class="ring" aria-hidden="true"><strong id="percent">0%</strong></div>
+            <p id="progress-text"></p>
+          </section>
+          <section class="projects-card" aria-labelledby="projects-heading">
+            <h2 id="projects-heading">Open by project</h2>
+            <dl id="project-counts"></dl>
+          </section>
+        </aside>
+      </div>
+    </main>
+  </div>
+  <p id="notice" role="status" class="visually-hidden"></p>
+</body>
+</html>
